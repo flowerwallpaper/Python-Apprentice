@@ -2,7 +2,7 @@
 Crazy Spiral
 
 Make your own crazy spiral with a pattern like
-in 14_FLaming_Ninja_Star.py, but use what you've learned about loops
+in 14_Flaming_Ninja_Star.py, but use what you've learned about loops
 """
 
 ... # Copy code to make a turtle and set up the window

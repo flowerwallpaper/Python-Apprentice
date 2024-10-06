@@ -37,7 +37,9 @@ t.speed(3)
 set_turtle_image(t, "leaguebot_bolt.gif")
 
 t.turtlesize(10, 10)
+
 t.pencolor('blue')
+
 for i in range(6):
     t.forward(50)
     t.left(360/6)
