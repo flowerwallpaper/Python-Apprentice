@@ -1,4 +1,5 @@
 import random
+random.seed()
 
 # Create an if-main code block
 
