@@ -37,14 +37,18 @@ app = App("Numbers Grid", layout="grid")
 for i in range(10):
     for j in range(10):
         num = i * 10 + j + 1
+        symbol = str(num)
+
         if num % 15 == 0:
-            Text(app, text='🐍', grid=[i, j])
+            symbol='🐍'
         elif num % 5 == 0:
-            Text(app, text='🦡', grid=[i, j])
+            symbol='🦡'
         elif num % 3 == 0:
-            Text(app, text='🍄', grid=[i, j])
-        else:
-            Text(app, text=str(num), grid=[i, j], color="black")
+            symbol='🍄'
+        Text(app, text=symbol, grid=[j, i], color="black")
+
+
+
 
 # In the loop, calculate or increment the number
 
