@@ -40,13 +40,15 @@ def add_definition(db, key, value):
     """
 
     # Check the limit
-
-    # Set the item in the database
-
-    pass
-
+    if len(db) >= 5:
+        error("Error", "The database is already full")
+    elif key in db:
+        error("Error", f"The word '{key}' already exists in the database")
+    else:
+        db[key] = value
 
 def delete_definition(db, key):
+
     """
     Deletes the definition associated with the given key from the database.
 
@@ -58,9 +60,10 @@ def delete_definition(db, key):
         None
     """
 
-    # Delete the item from db if it is present
+    if key in db:
+        db.remove[key]
 
-    pass
+    # Delete the item from db if it is present
 
 
 def is_funny(definition):
@@ -78,6 +81,11 @@ def is_funny(definition):
     
     # Return True if the definition contains any of the funny words, False otherwise
 
+    funny = {'fun', 'funny', 'hilarious', 'amusing', 'pants', 'spleen'}
+    for item in funny:
+        if item in definition:
+            return True
+
     return False
 
 def update_listbox(db):
@@ -90,17 +98,18 @@ def update_listbox(db):
 
     # This function will return a list of definitions to be displayed in the listbox, like
     # the one below. (For your function, you should set this list to the empty list)
-    l = [
-        "Item 1: Fake Definition 1",
-        "Item 2: Fake Definition 2",
-        "Item 3: fake Definition 3"
-    ]
+
+    # l = [
+    #     "Item 1: Fake Definition 1",
+    #     "Item 2: Fake Definition 2",
+    #     "Item 3: fake Definition 3"
+    # ]
 
     # Add each definition to a string
     # iterate over the dict's key-value pairs and turn them into
     # strings, then add the strings to the list with .append()
 
-    return l
+    return [f"{key}: {value}" for key, value in db.items()]
 
 ################################################################
 
@@ -109,7 +118,6 @@ def update_listbox(db):
 def _add_definition():
     word = word_entry.value.strip()
     definition = definition_entry.value.strip()
-    
 
     if word and definition:
         if is_funny(definition):

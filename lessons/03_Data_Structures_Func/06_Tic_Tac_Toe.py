@@ -15,6 +15,12 @@ def check_row(l):
     Returns:
         The winner's token ( x or o ) if there is one, otherwise None
         """
+    
+    if l == [X_MARK, X_MARK, X_MARK]:
+        return X_MARK
+    
+    elif l == [O_MARK, O_MARK, O_MARK]:
+        return O_MARK
 
     return None
 
@@ -27,6 +33,23 @@ def check_win(board):
         The winner's token ( x or o ) if there is one, otherwise None
     """
 
+    m = board[:] 
+
+    # Add the columns by zipping and converting to lists
+    m.extend([list(col) for col in zip(*board)])
+
+    # Add the two diagonals
+    d1 = [board[i][i] for i in range(3)]
+    d2 = [board[i][2 - i] for i in range(3)]
+    m.append(d1)
+    m.append(d2)
+
+    # Check each row/column/diagonal for a winner
+    for e in m:
+        result = check_row(e)
+        if result:
+            return result
+    
     return None
 
 # The following code is the main part of the program. It creates a GUI for the
